@@ -10,19 +10,19 @@ import { UsersService } from '../../users.service';
 export class AddUserComponent implements OnInit {
 
   angForm: FormGroup;
-  constructor(private fb: FormBuilder, private us: UsersService) {
+  constructor(private formBuilder: FormBuilder, private usersService: UsersService) {
     this.createForm();
   }
 
   createForm() {
-    this.angForm = this.fb.group({
+    this.angForm = this.formBuilder.group({
       UserName: ['', Validators.required ],
       UserNick: ['', Validators.required ]
     });
   }
 
   addUser(UserName, UserNick) {
-    this.us.addUser(UserName, UserNick);
+    this.usersService.addUser(UserName, UserNick);
   }
 
   ngOnInit() {
